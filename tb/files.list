@@ -1,0 +1,13 @@
+../regs.v
+../ahbSlv.v
+../syncFlop.v
+../resetSync.v
+../gainBal.v
+../gc_cntr8.v
+../gc2bin8.v
+../p2tdm.v
+../tdm2p.v
+../tdmMux.v
+../tdm.v
+
+tb.v
