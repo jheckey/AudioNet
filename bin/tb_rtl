@@ -1,0 +1,10 @@
+#!/bin/bash
+
+iverilog \
+    -o tb.vvp \
+    -Wall \
+    -s tb \
+    -I../tb \
+    -f ../hdl/files.list \
+    -f ../tb/files.list
+

@@ -1,0 +1,11 @@
+../hdl/regs.v
+../hdl/ahbSlv.v
+../hdl/syncFlop.v
+../hdl/resetSync.v
+../hdl/gainBal.v
+../hdl/gc_cntr8.v
+../hdl/gc2bin8.v
+../hdl/p2tdm.v
+../hdl/tdm2p.v
+../hdl/tdmMux.v
+../hdl/tdm.v
