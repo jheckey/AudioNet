@@ -6,7 +6,7 @@ Module: tdm2p
 
 Purpose: 
     Translate serial, 8-channel, 32-bit word TDM output from the ADC into 
-    a 256-bit wide register.
+    a 256-bit (8*32) wide register.
 
 Function:
     The TDM serial clock (sclk) is oversampled by the system clock (clk).
@@ -57,7 +57,7 @@ localparam POSEDGE = 1'b1, NEGEDGE = 1'b0;
 // Generate signal to sample
 wire posSamp    = (lastReg == NEGEDGE) && ((clkPatt && clkMask) == (clkSamp && clkMask));
 wire negSamp    = (lastReg == POSEDGE) && ((~clkPatt && clkMask) == (clkSamp && clkMask));
-wire sample     = !init && posSample;
+wire sample     = !init && posSamp;
 
 // Sample sclk
 always @(posedge clk or negedge rstn) begin

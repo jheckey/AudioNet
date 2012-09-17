@@ -1,10 +1,20 @@
-/*
-   
+task wait_hclks();
+    input  [31:0]   clocks;
+    reg    [31:0]   cnt;
+begin
+    cnt = 0;
+    while (cnt <= clocks) begin
+        wait @negedge hclk;
+        cnt = cnt+1;
+    end
+end
+endtask
+
 task write_reg();
     input  [31:0]   addr;
     input  [31:0]   data;
 begin
-    wait_clks(0);   // sync
+    wait_hclks(0);   // sync
 
     hsel    = 1'b1;
     haddr   = addr;
@@ -13,7 +23,7 @@ begin
     hwrite  = 1'b1;
     hwdata  = data;
     wait (hready);  // wait for ready
-    wait_clks(1);   // wait for the clock to change
+    wait_hclks(1);   // wait for the clock to change
 
     hsel    = 1'b0;
     hwrite  = 1'b0;
@@ -25,7 +35,7 @@ task read_reg();
     input  [31:0]   addr;
     output [31:0]   data;
 begin
-    wait_clks(0);   // sync
+    wait_hclks(0);   // sync
 
     hsel    = 1'b1;
     haddr   = addr;
@@ -33,7 +43,7 @@ begin
     htrans  = 2'd0;
     hwrite  = 1'b0;
     wait (hready);  // wait for ready
-    wait_clks(1);   // wait for the clock to change
+    wait_hclks(1);   // wait for the clock to change
     data    = hrdata;
 
     hsel    = 1'b0;
@@ -42,6 +52,7 @@ end
 endtask
 
 
+/*
 task write_burst();
     input  [31:0]   addr;
     input  [ 2:0]   burst;

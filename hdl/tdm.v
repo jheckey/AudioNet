@@ -28,9 +28,11 @@ module tdm (
 
 localparam FLOPS = 2;
 
-wire [15:0] p2tdmRetrans;
-wire [15:0] p2tdmDropped;
-wire [255:0] muxPdata;
+wire [15:0]     p2tdmRetrans;
+wire [15:0]     p2tdmDropped;
+wire [255:0]    muxPdata;
+wire            srstn;
+wire            muxPdataValid;
 
 /*AUTOWIRE*/
 // Beginning of automatic wires (for undeclared instantiated-module outputs)

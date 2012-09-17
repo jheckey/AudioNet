@@ -1,1 +1,3 @@
 ../tb/tb.v
+../tb/sergen.v
+../tb/rectifier.v

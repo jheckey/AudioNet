@@ -5,6 +5,8 @@ iverilog \
     -Wall \
     -s tb \
     -I../tb \
-    -f ../hdl/files.list \
-    -f ../tb/files.list
+    -y../hdl \
+    -y../tb \
+    -f ../tb/files.list \
+    -f ../hdl/files.list 2>&1 | grep -v -f warnings.exp
 
