@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ ! -e tb.vvp ]; then
+    echo "Please build the TB!"
+    exit -1
+fi
+
+vvp tb.vvp -lxt2
