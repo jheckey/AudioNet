@@ -72,6 +72,15 @@ initial begin
     tbrstn    = 1'b0;
     sergen_en = 1'b0;
 
+    hsel      = 1'b0;
+    haddr     = 32'd0;
+    hburst    = 3'd0;
+    hmastlock = 1'b0;
+    hsize     = 3'd0;
+    htrans    = 2'd0;
+    hwrite    = 1'b0;
+    hwdata    = 32'd0;
+
     // wake up TB
     #20
     $display("%t: Waking TB...", $time);
@@ -82,6 +91,16 @@ initial begin
     $display("%t: Waking DUT...", $time);
     rstn      = 1'b1;
     hresetn   = 1'b1;
+
+    // Initialize registers
+    #10
+    $display("%t: Initialize DUT...", $time);
+    write_reg(32'h0000_0300, 32'h0000_0001); // Enable bypass mode (tdm2p->p2tdm)
+    $display("bypass enabled");
+    write_reg(32'h0000_0100, 32'h8000_0000); // Enable p2tdm
+    $display("p2tdm enabled");
+    write_reg(32'h0000_0000, 32'h8000_FF3C); // Enable tdm2p, look for the pattern 00111100
+    $display("tdm2p enabled");
 
     // Start testing
     #10

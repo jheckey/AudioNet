@@ -55,8 +55,8 @@ reg             next;
 localparam POSEDGE = 1'b1, NEGEDGE = 1'b0;
 
 // Generate signal to sample
-wire posSamp    = (lastReg == NEGEDGE) && ((clkPatt && clkMask) == (clkSamp && clkMask));
-wire negSamp    = (lastReg == POSEDGE) && ((~clkPatt && clkMask) == (clkSamp && clkMask));
+wire posSamp    = (lastReg == NEGEDGE) && ((clkPatt & clkMask) == (clkSamp & clkMask));
+wire negSamp    = (lastReg == POSEDGE) && ((~clkPatt & clkMask) == (clkSamp & clkMask));
 wire sample     = !init && posSamp;
 
 // Sample sclk

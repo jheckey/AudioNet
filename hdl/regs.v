@@ -46,6 +46,9 @@ always @(posedge clk or negedge rstn) begin
 
         gain[63:0]      <= 64'd0;
         bal[31:0]       <= 32'd0;
+
+        // TDM MUX signals
+        sel             <= 1'b0;
     end
     else begin
 
