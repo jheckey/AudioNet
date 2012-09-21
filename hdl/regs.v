@@ -42,6 +42,7 @@ always @(posedge clk or negedge rstn) begin
         p2tdmEnable     <= 1'b0;
         p2tdmRetrans    <= 16'd0;
         p2tdmDropped    <= 16'd0;
+        p2tdmValid      <= 1'b0;
         p2tdmPdata      <= 256'd0;
 
         gain[63:0]      <= 64'd0;

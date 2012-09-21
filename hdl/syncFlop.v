@@ -6,6 +6,7 @@ module syncFlop (
 );
 
 parameter FLOPS = 2;
+parameter RESET = 1'b0;
 
 reg [FLOPS-1:0] stage;
 integer i;
@@ -15,7 +16,7 @@ assign sync = stage[FLOPS-1];
 always @(posedge clk or negedge rstn) begin
     if (!rstn) begin
         for (i=0; i<FLOPS; i=i+1) begin
-            stage[i]   <= 1'b0;
+            stage[i]   <= RESET;
         end
     end
     else begin

@@ -32,7 +32,7 @@ always @(posedge sclk or negedge rstn) begin
             // Lock on first sfs and stay locked
             locked      <= 1'b1;
             // Clear previous frame and get current data
-            shiftreg    <= {254'd0, sdata};
+            shiftreg    <= 256'd0;
         end
         else begin
             // Stay locked
@@ -45,7 +45,7 @@ always @(posedge sclk or negedge rstn) begin
         if (locked && sfs) begin
             // Valid for one cycle, latch current data from shift reg
             pvalid      <= 1'b1;
-            pdata       <= shiftreg;
+            pdata       <= {shiftreg[254:0], sdata};
         end
         else begin
             // Retain data for inspection

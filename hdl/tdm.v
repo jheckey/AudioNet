@@ -181,7 +181,6 @@ gainBal gainBal (/*AUTOINST*/
 /* p2tdm AUTO_TEMPLATE (
         .enable         (p2tdmEnable),
         .clk\(.+\)      (p2tdmClk\1[]),
-        .ack            (),
         .fs             (fsOut),
         .tdmout         (tdmOut),
         .retransIncr    (p2tdmRetransIncr),
@@ -190,7 +189,6 @@ gainBal gainBal (/*AUTOINST*/
 */
 p2tdm p2tdm (/*AUTOINST*/
              // Outputs
-             .ack                       (),                      // Templated
              .fs                        (fsOut),
              .tdmout                    (tdmOut),
              .retransIncr               (p2tdmRetransIncr),      // Templated
@@ -199,8 +197,11 @@ p2tdm p2tdm (/*AUTOINST*/
              .clk                       (clk),
              .rstn                      (rstn),
              .enable                    (p2tdmEnable),           // Templated
-             .valid                     (valid),
-             .pdata                     (pdata[255:0]),
+             // Bypassing gainBal for debugging
+             //.valid                     (valid),
+             //.pdata                     (pdata[255:0]),
+             .valid                 (muxPdataValid),         // Templated
+             .pdata                 (muxPdata[255:0]),       // Templated
              .sclk                      (sclk),
              .srstn                     (srstn));
 
