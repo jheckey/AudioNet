@@ -130,16 +130,16 @@ always @(posedge clk or negedge rstn) begin
             end
 
             if (ack && (stageV || tdataV)) begin
-                pFs     <= cnt0;
                 pTdmout <= stage[0];    
                 // bypass tdata to avoid bit shifting
                 // cnt == 0, but that bit may not 
                 // be in tdata yet
             end
             else begin
-                pFs     <= tdataV && cnt0;
                 pTdmout <= tdata[cnt];
             end
+
+            pFs <= tdataV && cnt0;
 
             // Edge detection
             lastCnt0            <= cnt0;
@@ -157,7 +157,7 @@ end
 ********************/
 syncFlop #(.FLOPS(2), .RESET(1'b1)) syncClear (.clk(sclk), .rstn(srstn), .data(clear), .sync(sclear));
 
-gcCntr8 gcCntr (.clk(sclk), .rstn(rstn), .clear(sclear), .cntr(), .gc(gc));
+gcCntr8 gcCntr (.clk(sclk), .rstn(rstn), .load(sclear), .updn(0), .num(8'd1), .cntr(), .gc(gc));
 
 genvar i;
 generate
