@@ -66,8 +66,8 @@ module p2tdm (
 
 reg [255:0] stage, tdata;
 reg         stageV, tdataV, pFs, pTdmout;
-reg         lastBitSlipDetect, lastCnt0;
-reg [7:0]   fsGc;
+reg         lastBitSlipDetect;
+reg [7:0]   fsGc, lastCnt;
 
 wire        sclear;
 wire        bitSlip, bitSlipDetect;
@@ -75,9 +75,10 @@ wire [7:0]  gc;
 wire [7:0]  sgc;
 wire [7:0]  cnt;
 
-wire cnt0   = (cnt == 8'd0);
-wire ack    = (stageV && !tdataV) || (cnt0 && !lastCnt0);    // edge-detect
-wire clear  = !(stageV || tdataV);
+wire cnt0       = (cnt == 8'd0);
+wire cntEdge    = (cnt != lastCnt);
+wire ack        = (stageV && !tdataV) || (cnt0 && cntEdge);    // edge-detect
+wire clear      = !(stageV || tdataV);
 
 always @(posedge clk or negedge rstn) begin
     if (!rstn) begin
@@ -88,7 +89,7 @@ always @(posedge clk or negedge rstn) begin
         pFs     <= 1'b0;
         pTdmout <= 1'b0;
 
-        lastCnt0            <= 1'b0;    // Counter intializes to 0, reset hi
+        lastCnt             <= 8'h00;
         lastBitSlipDetect   <= 1'b0;
 
         bitSlipIncr <= 1'b0;
@@ -105,7 +106,7 @@ always @(posedge clk or negedge rstn) begin
             pFs     <= 1'b0;
             pTdmout <= 1'b0;
 
-            lastCnt0            <= 1'b0;
+            lastCnt             <= 8'h00;
             lastBitSlipDetect   <= 1'b0;
 
             bitSlipIncr <= 1'b0;
@@ -129,20 +130,19 @@ always @(posedge clk or negedge rstn) begin
                 tdataV  <= stageV;
             end
 
-            if (ack && (stageV || tdataV)) begin
-                pTdmout <= stage[0];    
+            if (ack && stageV && !tdataV) begin
                 // bypass tdata to avoid bit shifting
-                // cnt == 0, but that bit may not 
-                // be in tdata yet
+                // -- on first load
+                pTdmout <= stage[0];    
             end
-            else begin
+            else if (cntEdge) begin
                 pTdmout <= tdata[cnt];
             end
 
             pFs <= tdataV && cnt0;
 
             // Edge detection
-            lastCnt0            <= cnt0;
+            lastCnt             <= cnt;
             lastBitSlipDetect   <= bitSlipDetect;
 
             bitSlipIncr <= bitSlipDetect && !lastBitSlipDetect; // edge-detect

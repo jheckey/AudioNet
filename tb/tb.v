@@ -51,8 +51,15 @@ wire         tdmout;
 reg          gclk;
 reg          tbrstn;
 reg          sergen_en;
-wire         inPvalid, outPvalid;
-wire [255:0] inPdata, outPdata;
+reg          passThru;
+wire         rxTestPass, txTestPass;
+wire         rxPvalid, regPvalid, txPvalid;
+wire [255:0] rxPdata, regPdata, txPdata;
+wire         rxChkExpEmpty, rxChkExpPop;
+wire         txChkExpEmpty, txChkExpPop;
+wire [255:0] rxChkExpData, txChkExpData;
+wire         rxMonValid, txMonValid;
+wire [255:0] rxMonData, txMonData;
 
 /* Dump controls */
 initial begin
@@ -80,6 +87,7 @@ initial begin
     htrans    = 2'd0;
     hwrite    = 1'b0;
     hwdata    = 32'd0;
+    passThru  = 1'b0;
 
     // wake up TB
     #20
@@ -95,11 +103,17 @@ initial begin
     // Initialize registers
     #10
     $display("%t: Initialize DUT...", $time);
-    write_reg(32'h0000_0300, 32'h0000_0001); // Enable bypass mode (tdm2p->p2tdm)
+    // Enable bypass mode (tdm2p->p2tdm)
+    write_reg(32'h0000_0300, 32'h0000_0001);
+    passThru = 1'b1;
     $display("bypass enabled");
-    write_reg(32'h0000_0100, 32'h8000_0000); // Enable p2tdm
+
+    // Enable p2tdm
+    write_reg(32'h0000_0100, 32'h8000_0000);
     $display("p2tdm enabled");
-    write_reg(32'h0000_0000, 32'h8000_FF3C); // Enable tdm2p, look for the pattern 00111100
+
+    // Enable tdm2p, look for the pattern 00111100
+    write_reg(32'h0000_0000, 32'h8000_FF3C);
     $display("tdm2p enabled");
 
     // Start testing
@@ -157,23 +171,54 @@ sergen sergen (
     .sfs                    (fsin)
 );
 
-rectifier inMon (
+rectifier rxMon (
     .sclk                   (sclk),
     .rstn                   (tbrstn),
     .sdata                  (tdmin),
     .sfs                    (fsin),
-    .pvalid                 (inPvalid),
-    .pdata                  (inPdata)
+    .pvalid                 (rxPvalid),
+    .pdata                  (rxPdata)
 );
 
-rectifier outMon (
+scoreboard #(.ADDR(2), .WIDTH(256))
+    rxScbd (
+    .clk                    (sclk),
+    .rstn                   (tbrstn),
+    .push                   (rxPvalid),
+    .din                    (rxPdata),
+    .pop                    (rxChkExpPop),
+    .dout                   (rxChkExpData),
+    .level                  (),
+    .empty                  (rxChkExpEmpty),
+    .full                   ()
+);
+
+rectifier txMon (
     .sclk                   (sclk),
     .rstn                   (tbrstn),
     .sdata                  (tdmout),
     .sfs                    (fsout),
-    .pvalid                 (outPvalid),
-    .pdata                  (outPdata)
+    .pvalid                 (txPvalid),
+    .pdata                  (txPdata)
 );
+
+assign rxMonValid = ( passThru) ? txPvalid : regPvalid;
+assign rxMonData  = ( passThru) ? txPdata  : regPdata;
+assign txMonValid = !passThru && txPvalid;
+assign txMonData  = txPdata;
+
+checker rxCheck (
+    .clk                    (sclk),
+    .rstn                   (tbrstn),
+    .expValid               (!rxChkExpEmpty),
+    .expData                (rxChkExpData),
+    .expPop                 (rxChkExpPop),
+    .actValid               (rxMonValid),
+    .actData                (rxMonData),
+    .testPass               (rxTestPass)
+);
+
+//checker txCheck
 
 `include "tasks.v"
 //`include "stim.v"

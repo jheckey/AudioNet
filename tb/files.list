@@ -1,3 +1,4 @@
 ../tb/tb.v
+../tb/scoreboard.v
 ../tb/sergen.v
 ../tb/rectifier.v
