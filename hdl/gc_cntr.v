@@ -1,3 +1,17 @@
+/* Grey-coded counter
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: gc_cntr
+
+Purpose: 
+    Counter that outputs in Grey-code
+
+Function:
+    Counts in normal binary, but converts output to Grey-code.
+    Parameterized for any width
+*/
+
 module gc_cntr (
     input  wire         clk,
     input  wire         rstn,

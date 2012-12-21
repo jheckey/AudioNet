@@ -1,3 +1,18 @@
+/* Gain and balance multipliers
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: gainBal
+
+Purpose: 
+    A gain/balance fixed point multiplier
+
+Function:
+    This is a parallel multiplier for all 8 channels of the 256-bit frame.
+    It takes the gain and balance, doubles the width of the data, multiplies
+    the values and readjusts the width back to 32-bits
+*/
+
 module gainBal (
     input  wire             clk,
     input  wire             rstn,

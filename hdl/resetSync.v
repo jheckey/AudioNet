@@ -1,3 +1,15 @@
+/* reset synchronizer
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: resetSync
+
+Purpose: 
+    Simple, variable depth reset synchronizer flop
+
+Function:
+*/
+
 module resetSync (
     input  wire     clk,
     input  wire     asyncRstn,

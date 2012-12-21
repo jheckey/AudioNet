@@ -1,0 +1,281 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+FLOPS	./hdl/resetSync.v	/^parameter FLOPS = 2;$/;"	c
+FLOPS	./hdl/syncFlop.v	/^parameter FLOPS = 2;$/;"	c
+WIDTH	./hdl/gc2bin.v	/^parameter WIDTH = 8;$/;"	c
+WIDTH	./hdl/gc_cntr.v	/^parameter WIDTH = 8;$/;"	c
+acked	./hdl/p2tdm.v	/^reg         acked;$/;"	r
+addr	./hdl/tdm.v	/^wire [9:0]              addr;                   \/\/ From ahbSlv of ahbSlv.v$/;"	n
+addr	./tb/tasks.v	/^    input  [31:0]   addr;$/;"	p
+ahbSlv	./hdl/ahbSlv.v	/^module ahbSlv ($/;"	m
+align	./hdl/p2tdm.v	/^wire [7:0]  align;$/;"	n
+bal	./hdl/tdm.v	/^wire [31:0]             bal;                    \/\/ From regs of regs.v$/;"	n
+bal	./tb/regs.v	/^reg  [31:0]      bal;$/;"	r
+bal_mem	./hdl/gainBal.v	/^reg [7:0]  bal_mem[3:0];$/;"	r
+bin_r	./hdl/gc2bin.v	/^reg [WIDTH-1:0] bin_r;$/;"	r
+bin_r	./hdl/gc2bin8.v	/^reg  [7:0]     bin_r;$/;"	r
+bit	./hdl/tdm2p.v	/^reg  [7:0]      bit;$/;"	r
+bitcnt	./tb/rectifier.v	/^integer     bitcnt;$/;"	r
+burstAddr	./hdl/ahbSlv.v	/^reg  [9:0]     burstAddr;$/;"	r
+checkTbRegs	./tb/regs.v	/^task checkTbRegs();$/;"	t
+clear	./hdl/p2tdm.v	/^wire        clear;$/;"	n
+clear	./tb/test.v	/^wire clear;$/;"	n
+clk	./tb/tb.v	/^reg          clk;$/;"	r
+clkSamp	./hdl/tdm2p.v	/^reg  [7:0]      clkSamp;$/;"	r
+clocks	./tb/tasks.v	/^    input  [31:0]   clocks;$/;"	p
+cnt	./hdl/gc2bin.v	/^integer cnt;$/;"	r
+cnt	./hdl/p2tdm.v	/^wire [7:0]  cnt;$/;"	n
+cnt	./tb/tasks.v	/^    reg    [31:0]   cnt;$/;"	r
+count	./tb/sergen.v	/^reg [7:0] count;$/;"	r
+data	./tb/tasks.v	/^    input  [31:0]   data;$/;"	p
+data	./tb/tasks.v	/^    output [31:0]   data;$/;"	p
+enable	./tb/test.v	/^reg sclk, srstn, enable;$/;"	r
+fsOut	./hdl/tdm.v	/^wire                    fsOut;                  \/\/ From p2tdm of p2tdm.v$/;"	n
+fsin	./tb/tb.v	/^wire         fsin;$/;"	n
+fsout	./tb/tb.v	/^wire         fsout;$/;"	n
+gain	./hdl/tdm.v	/^wire [63:0]             gain;                   \/\/ From regs of regs.v$/;"	n
+gain	./tb/regs.v	/^reg  [63:0]      gain;$/;"	r
+gainBal	./hdl/gainBal.v	/^module gainBal ($/;"	m
+gain_mem	./hdl/gainBal.v	/^reg [7:0]  gain_mem[7:0];$/;"	r
+gc	./hdl/p2tdm.v	/^wire [7:0]  gc;$/;"	n
+gc2bin	./hdl/gc2bin.v	/^module gc2bin ($/;"	m
+gc2bin8	./hdl/gc2bin8.v	/^module gc2bin8 ($/;"	m
+gcCntr8	./hdl/gcCntr8.v	/^module gcCntr8 ($/;"	m
+gc_cntr	./hdl/gc_cntr.v	/^module gc_cntr ($/;"	m
+gclk	./tb/tb.v	/^reg          gclk;$/;"	r
+haddr	./tb/tb.v	/^reg  [31:0]  haddr;$/;"	r
+hburst	./tb/tb.v	/^reg  [2:0]   hburst;$/;"	r
+hclk	./tb/tb.v	/^reg          hclk;$/;"	r
+hmastlock	./tb/tb.v	/^reg          hmastlock;$/;"	r
+hrdata	./tb/tb.v	/^wire [31:0]  hrdata;$/;"	n
+hready	./tb/tb.v	/^wire         hready;$/;"	n
+hresetn	./tb/tb.v	/^reg          hresetn;$/;"	r
+hresp	./tb/tb.v	/^wire [1:0]   hresp;$/;"	n
+hsel	./tb/tb.v	/^reg          hsel;$/;"	r
+hsize	./tb/tb.v	/^reg  [2:0]   hsize;$/;"	r
+htrans	./tb/tb.v	/^reg  [1:0]   htrans;$/;"	r
+hwdata	./tb/tb.v	/^reg  [31:0]  hwdata;$/;"	r
+hwrite	./tb/tb.v	/^reg          hwrite;$/;"	r
+i	./hdl/gainBal.v	/^integer i, j, k, l;$/;"	r
+i	./hdl/gc2bin.v	/^reg [WIDTH-1:0] i;$/;"	r
+i	./hdl/gc_cntr.v	/^integer i;$/;"	r
+i	./hdl/regs.v	/^integer i;$/;"	r
+i	./hdl/syncFlop.v	/^integer i;$/;"	r
+idx	./hdl/gc2bin.v	/^reg [WIDTH-1:0] idx;$/;"	r
+inPdata	./tb/tb.v	/^wire [255:0] inPdata, outPdata;$/;"	n
+inPvalid	./tb/tb.v	/^wire         inPvalid, outPvalid;$/;"	n
+init	./hdl/tdm2p.v	/^reg             init;$/;"	r
+j	./hdl/gainBal.v	/^integer i, j, k, l;$/;"	r
+k	./hdl/gainBal.v	/^integer i, j, k, l;$/;"	r
+l	./hdl/gainBal.v	/^integer i, j, k, l;$/;"	r
+lastCnt	./hdl/p2tdm.v	/^reg         lastCnt;$/;"	r
+lastFs	./hdl/tdm2p.v	/^reg             lastFs;$/;"	r
+lastReg	./hdl/tdm2p.v	/^reg             lastReg;$/;"	r
+locked	./tb/rectifier.v	/^reg         locked;$/;"	r
+lut	./hdl/gc2bin.v	/^reg [WIDTH-1:0] lut[0:IDX-1];$/;"	r
+mult	./hdl/gainBal.v	/^reg [15:0] mult[0:7];$/;"	r
+muxPdata	./hdl/tdm.v	/^wire [255:0]    muxPdata;$/;"	n
+muxPdataValid	./hdl/tdm.v	/^wire            muxPdataValid;$/;"	n
+negSamp	./hdl/tdm2p.v	/^wire negSamp    = (lastReg == POSEDGE) && ((~clkPatt & clkMask) == (clkSamp & clkMask));$/;"	n
+next	./hdl/p2tdm.v	/^wire        next;$/;"	n
+next	./hdl/tdm2p.v	/^reg             next;$/;"	r
+outPdata	./tb/tb.v	/^wire [255:0] inPdata, outPdata;$/;"	n
+outPvalid	./tb/tb.v	/^wire         inPvalid, outPvalid;$/;"	n
+p2tdm	./hdl/p2tdm.v	/^module p2tdm ($/;"	m
+p2tdmDropped	./hdl/tdm.v	/^wire [15:0]     p2tdmDropped;$/;"	n
+p2tdmDropped	./tb/regs.v	/^reg  [15:0]      p2tdmDropped;$/;"	r
+p2tdmDroppedIncr	./hdl/tdm.v	/^wire                    p2tdmDroppedIncr;       \/\/ From regs of regs.v, ...$/;"	n
+p2tdmEnable	./hdl/tdm.v	/^wire                    p2tdmEnable;            \/\/ From regs of regs.v$/;"	n
+p2tdmEnable	./tb/regs.v	/^reg              p2tdmEnable;$/;"	r
+p2tdmPdata	./hdl/tdm.v	/^wire [255:0]            p2tdmPdata;             \/\/ From regs of regs.v$/;"	n
+p2tdmRetrans	./hdl/tdm.v	/^wire [15:0]     p2tdmRetrans;$/;"	n
+p2tdmRetrans	./tb/regs.v	/^reg  [15:0]      p2tdmRetrans;$/;"	r
+p2tdmRetransIncr	./hdl/tdm.v	/^wire                    p2tdmRetransIncr;       \/\/ From regs of regs.v, ...$/;"	n
+p2tdmValid	./hdl/tdm.v	/^wire                    p2tdmValid;             \/\/ From regs of regs.v$/;"	n
+pFs	./hdl/p2tdm.v	/^reg         pFs;$/;"	r
+pTdmout	./hdl/p2tdm.v	/^reg         pTdmout;$/;"	r
+pdata	./hdl/tdm.v	/^wire [255:0]            pdata;                  \/\/ From gainBal of gainBal.v$/;"	n
+posSamp	./hdl/tdm2p.v	/^wire posSamp    = (lastReg == NEGEDGE) && ((clkPatt & clkMask) == (clkSamp & clkMask));$/;"	n
+quot	./hdl/gainBal.v	/^reg [47:0] quot[0:7];$/;"	r
+rand	./tb/sergen.v	/^integer rand;$/;"	r
+rdata	./hdl/tdm.v	/^wire [31:0]             rdata;                  \/\/ From regs of regs.v$/;"	n
+read_reg	./tb/tasks.v	/^task read_reg;$/;"	t
+ready	./hdl/tdm.v	/^wire                    ready;                  \/\/ From regs of regs.v$/;"	n
+rectifier	./tb/rectifier.v	/^module rectifier ($/;"	m
+reg	./hdl/ahbSlv.v	/^    output reg              val,$/;"	p
+reg	./hdl/ahbSlv.v	/^    output reg              write,$/;"	p
+reg	./hdl/ahbSlv.v	/^    output reg  [31:0]      wdata,$/;"	p
+reg	./hdl/ahbSlv.v	/^    output reg  [9:0]       addr,$/;"	p
+reg	./hdl/gainBal.v	/^    output reg              dout_val,$/;"	p
+reg	./hdl/gainBal.v	/^    output reg  [255:0]     dout$/;"	p
+reg	./hdl/gcCntr8.v	/^    output reg  [7:0]   cntr,$/;"	p
+reg	./hdl/gc_cntr.v	/^    output reg  [7:0]   cntr,$/;"	p
+reg	./hdl/gc_cntr.v	/^    output reg  [7:0]   gc$/;"	p
+reg	./hdl/p2tdm.v	/^    output reg          droppedIncr     \/\/ count of samples dropped$/;"	p
+reg	./hdl/p2tdm.v	/^    output reg          retransIncr,    \/\/ count of samples retransmitted$/;"	p
+reg	./hdl/regs.v	/^    output reg              p2tdmEnable,$/;"	p
+reg	./hdl/regs.v	/^    output reg              p2tdmValid,$/;"	p
+reg	./hdl/regs.v	/^    output reg              ready,$/;"	p
+reg	./hdl/regs.v	/^    output reg              sel$/;"	p
+reg	./hdl/regs.v	/^    output reg              tdm2pEnable,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [15:0]      p2tdmDropped,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [15:0]      p2tdmRetrans,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [255:0]     p2tdmPdata,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [31:0]      bal,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [31:0]      rdata,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [63:0]      gain,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [7:0]       tdm2pClkMask,$/;"	p
+reg	./hdl/regs.v	/^    output reg  [7:0]       tdm2pClkPatt,$/;"	p
+reg	./hdl/tdm2p.v	/^    output reg          valid,      \/\/ single-cycle (clk) valid for pdata$/;"	p
+reg	./hdl/tdm2p.v	/^    output reg  [255:0] pdata       \/\/ parallel data for samples$/;"	p
+reg	./tb/rectifier.v	/^    output reg          pvalid,$/;"	p
+reg	./tb/rectifier.v	/^    output reg  [255:0] pdata$/;"	p
+reg	./tb/sergen.v	/^    output reg      sdata,      \/\/ serial data$/;"	p
+reg	./tb/sergen.v	/^    output reg      sfs         \/\/ serial frame sync$/;"	p
+regs	./hdl/regs.v	/^module regs ($/;"	m
+resetSync	./hdl/resetSync.v	/^module resetSync ($/;"	m
+rstn	./tb/tb.v	/^reg          rstn;$/;"	r
+sample	./hdl/tdm2p.v	/^wire sample     = !init && posSamp;$/;"	n
+sclk	./tb/tb.v	/^reg          sclk;$/;"	r
+sclk	./tb/test.v	/^reg sclk, srstn, enable;$/;"	r
+sel	./hdl/tdm.v	/^wire                    sel;                    \/\/ From regs of regs.v$/;"	n
+sel	./tb/regs.v	/^reg              sel;$/;"	r
+sergen	./tb/sergen.v	/^module sergen ($/;"	m
+sergen_en	./tb/tb.v	/^reg          sergen_en;$/;"	r
+sgc	./hdl/p2tdm.v	/^wire [7:0]  sgc;$/;"	n
+shiftreg	./tb/rectifier.v	/^reg [255:0] shiftreg;$/;"	r
+srstn	./hdl/tdm.v	/^wire            srstn;$/;"	n
+srstn	./tb/test.v	/^reg sclk, srstn, enable;$/;"	r
+stage	./hdl/syncFlop.v	/^reg [FLOPS-1:0] stage;$/;"	r
+syncFlop	./hdl/syncFlop.v	/^module syncFlop ($/;"	m
+tb	./tb/tb.v	/^module tb;$/;"	m
+tbrstn	./tb/tb.v	/^reg          tbrstn;$/;"	r
+tdata	./hdl/p2tdm.v	/^reg [255:0] tdata;$/;"	r
+tdata	./hdl/tdm2p.v	/^reg  [255:0]    tdata;$/;"	r
+tdm	./hdl/tdm.v	/^module tdm ($/;"	m
+tdm2p	./hdl/tdm2p.v	/^module tdm2p ($/;"	m
+tdm2pClkMask	./hdl/tdm.v	/^wire [7:0]              tdm2pClkMask;           \/\/ From regs of regs.v$/;"	n
+tdm2pClkMask	./tb/regs.v	/^reg  [7:0]       tdm2pClkMask;$/;"	r
+tdm2pClkPatt	./hdl/tdm.v	/^wire [7:0]              tdm2pClkPatt;           \/\/ From regs of regs.v$/;"	n
+tdm2pClkPatt	./tb/regs.v	/^reg  [7:0]       tdm2pClkPatt;$/;"	r
+tdm2pEnable	./hdl/tdm.v	/^wire                    tdm2pEnable;            \/\/ From regs of regs.v$/;"	n
+tdm2pEnable	./tb/regs.v	/^reg              tdm2pEnable;$/;"	r
+tdm2pPdata	./hdl/tdm.v	/^wire [255:0]            tdm2pPdata;             \/\/ From tdm2p of tdm2p.v$/;"	n
+tdm2pValid	./hdl/tdm.v	/^wire                    tdm2pValid;             \/\/ From tdm2p of tdm2p.v$/;"	n
+tdmMux	./hdl/tdmMux.v	/^module tdmMux ($/;"	m
+tdmOut	./hdl/tdm.v	/^wire                    tdmOut;                 \/\/ From p2tdm of p2tdm.v$/;"	n
+tdmin	./tb/tb.v	/^wire         tdmin;$/;"	n
+tdmout	./tb/tb.v	/^wire         tdmout;$/;"	n
+test	./tb/test.v	/^module test;$/;"	m
+val	./hdl/tdm.v	/^wire                    val;                    \/\/ From ahbSlv of ahbSlv.v$/;"	n
+valid	./hdl/tdm.v	/^wire                    valid;                  \/\/ From gainBal of gainBal.v$/;"	n
+wait_hclks	./tb/tasks.v	/^task wait_hclks;$/;"	t
+wdata	./hdl/tdm.v	/^wire [31:0]             wdata;                  \/\/ From ahbSlv of ahbSlv.v$/;"	n
+wire	./hdl/ahbSlv.v	/^    input  wire             hclk,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire             hmastlock,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire             hresetn,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire             hsel,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire             hwrite,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire             ready$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire [1:0]       htrans,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire [2:0]       hburst,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire [2:0]       hsize,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire [31:0]      haddr,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire [31:0]      hwdata,$/;"	p
+wire	./hdl/ahbSlv.v	/^    input  wire [31:0]      rdata,$/;"	p
+wire	./hdl/ahbSlv.v	/^    output wire             hready,$/;"	p
+wire	./hdl/ahbSlv.v	/^    output wire [1:0]       hresp,$/;"	p
+wire	./hdl/ahbSlv.v	/^    output wire [31:0]      hrdata,$/;"	p
+wire	./hdl/gainBal.v	/^    input  wire             clk,$/;"	p
+wire	./hdl/gainBal.v	/^    input  wire             din_val,$/;"	p
+wire	./hdl/gainBal.v	/^    input  wire             rstn,$/;"	p
+wire	./hdl/gainBal.v	/^    input  wire [255:0]     din,$/;"	p
+wire	./hdl/gainBal.v	/^    input  wire [31:0]      bal,$/;"	p
+wire	./hdl/gainBal.v	/^    input  wire [63:0]      gain,$/;"	p
+wire	./hdl/gc2bin.v	/^    input  wire [WIDTH-1:0] gc,$/;"	p
+wire	./hdl/gc2bin.v	/^    output wire [WIDTH-1:0] bin$/;"	p
+wire	./hdl/gc2bin8.v	/^    input  wire [7:0]  gc,$/;"	p
+wire	./hdl/gc2bin8.v	/^    output wire [7:0]  bin$/;"	p
+wire	./hdl/gcCntr8.v	/^    input  wire         clear,$/;"	p
+wire	./hdl/gcCntr8.v	/^    input  wire         clk,$/;"	p
+wire	./hdl/gcCntr8.v	/^    input  wire         rstn,$/;"	p
+wire	./hdl/gcCntr8.v	/^    output wire [7:0]   gc$/;"	p
+wire	./hdl/gc_cntr.v	/^    input  wire         clear,$/;"	p
+wire	./hdl/gc_cntr.v	/^    input  wire         clk,$/;"	p
+wire	./hdl/gc_cntr.v	/^    input  wire         rstn,$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire         clk,            \/\/ system clock$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire         enable,         \/\/ enable de-serializer$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire         rstn,           \/\/ async, active low reset$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire         sclk,           \/\/ TDM serial clock$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire         srstn,          \/\/ TDM clk synced reset$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire         valid,          \/\/ valid for pdata$/;"	p
+wire	./hdl/p2tdm.v	/^    input  wire [255:0] pdata,          \/\/ parallel data for samples$/;"	p
+wire	./hdl/p2tdm.v	/^    output wire         ack,            \/\/ acknowledging data$/;"	p
+wire	./hdl/p2tdm.v	/^    output wire         fs,             \/\/ TDM frame sync$/;"	p
+wire	./hdl/p2tdm.v	/^    output wire         tdmout,         \/\/ TDM data out$/;"	p
+wire	./hdl/regs.v	/^    input  wire             clk,$/;"	p
+wire	./hdl/regs.v	/^    input  wire             p2tdmDroppedIncr,$/;"	p
+wire	./hdl/regs.v	/^    input  wire             p2tdmRetransIncr,$/;"	p
+wire	./hdl/regs.v	/^    input  wire             rstn,$/;"	p
+wire	./hdl/regs.v	/^    input  wire             tdm2pValid,$/;"	p
+wire	./hdl/regs.v	/^    input  wire             val,$/;"	p
+wire	./hdl/regs.v	/^    input  wire             write,$/;"	p
+wire	./hdl/regs.v	/^    input  wire [255:0]     tdm2pPdata,$/;"	p
+wire	./hdl/regs.v	/^    input  wire [31:0]      wdata,$/;"	p
+wire	./hdl/regs.v	/^    input  wire [9:0]       addr,$/;"	p
+wire	./hdl/resetSync.v	/^    input  wire     asyncRstn,$/;"	p
+wire	./hdl/resetSync.v	/^    input  wire     clk,$/;"	p
+wire	./hdl/resetSync.v	/^    output wire     syncRstn$/;"	p
+wire	./hdl/syncFlop.v	/^    input  wire     clk,$/;"	p
+wire	./hdl/syncFlop.v	/^    input  wire     data,$/;"	p
+wire	./hdl/syncFlop.v	/^    input  wire     rstn,$/;"	p
+wire	./hdl/syncFlop.v	/^    output wire     sync$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         clk,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         fsin,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         hclk,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         hmastlock,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         hresetn,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         hsel,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         hwrite,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         rstn,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         sclk,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire         tdmin,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire [1:0]   htrans,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire [2:0]   hburst,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire [2:0]   hsize,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire [31:0]  haddr,$/;"	p
+wire	./hdl/tdm.v	/^    input  wire [31:0]  hwdata,$/;"	p
+wire	./hdl/tdm.v	/^    output wire         fsout,$/;"	p
+wire	./hdl/tdm.v	/^    output wire         hready,$/;"	p
+wire	./hdl/tdm.v	/^    output wire         tdmout$/;"	p
+wire	./hdl/tdm.v	/^    output wire [1:0]   hresp,$/;"	p
+wire	./hdl/tdm.v	/^    output wire [31:0]  hrdata,$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire         clk,        \/\/ system clock$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire         enable,     \/\/ enable de-serializer$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire         fs,         \/\/ TDM frame sync$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire         rstn,       \/\/ async, active low reset$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire         sclk,       \/\/ TDM serial clock$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire         tdmin,      \/\/ TDM data in$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire [7:0]   clkMask,    \/\/ mask for don't care bits in pattern$/;"	p
+wire	./hdl/tdm2p.v	/^    input  wire [7:0]   clkPatt,    \/\/ pattern for clock edge determination$/;"	p
+wire	./hdl/tdmMux.v	/^    input  wire         sel,$/;"	p
+wire	./hdl/tdmMux.v	/^    input  wire         tdmPdataValid0,$/;"	p
+wire	./hdl/tdmMux.v	/^    input  wire         tdmPdataValid1,$/;"	p
+wire	./hdl/tdmMux.v	/^    input  wire [255:0] tdmPdata0,$/;"	p
+wire	./hdl/tdmMux.v	/^    input  wire [255:0] tdmPdata1,$/;"	p
+wire	./hdl/tdmMux.v	/^    output wire         tdmPdataValidX,$/;"	p
+wire	./hdl/tdmMux.v	/^    output wire [255:0] tdmPdataX$/;"	p
+wire	./tb/rectifier.v	/^    input  wire         rstn,$/;"	p
+wire	./tb/rectifier.v	/^    input  wire         sclk,$/;"	p
+wire	./tb/rectifier.v	/^    input  wire         sdata,$/;"	p
+wire	./tb/rectifier.v	/^    input  wire         sfs,$/;"	p
+wire	./tb/sergen.v	/^    input  wire     enable,$/;"	p
+wire	./tb/sergen.v	/^    input  wire     rstn,$/;"	p
+wire	./tb/sergen.v	/^    input  wire     sclk,$/;"	p
+write	./hdl/tdm.v	/^wire                    write;                  \/\/ From ahbSlv of ahbSlv.v$/;"	n
+writeTbConfig	./tb/regs.v	/^task writeTbConfig();$/;"	t
+write_reg	./tb/tasks.v	/^task write_reg;$/;"	t

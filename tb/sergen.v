@@ -1,3 +1,19 @@
+/* serial data generator
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: sergen
+
+Purpose: 
+    Randomly generates serial data, creates sfs every 256 bits
+
+Function:
+    Creates a random bit at every clock cycle when enabled. Generates an
+    sfs (serial frame start) at every 256 bits.
+
+    THIS MODULE IS NOT SYNTHESIZABLE. It is just for verification.
+*/
+
 module sergen (
     input  wire     sclk,
     input  wire     rstn,

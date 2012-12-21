@@ -1,3 +1,18 @@
+/* tasks include
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: n/a
+
+Purpose: 
+    Testbench tasks for waiting, and reading and writing registers.
+
+Function:
+    Provides tasks for basic testbench operations.
+
+    THIS MODULE IS NOT SYNTHESIZABLE. It is just for verification.
+*/
+
 task wait_hclks;
     input  [31:0]   clocks;
     reg    [31:0]   cnt;

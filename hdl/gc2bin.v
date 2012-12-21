@@ -1,3 +1,16 @@
+/* Generic Grey-coding to binary decoder
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: gc2bin
+
+Purpose: 
+    Decodes Grey-coding to binary
+
+Function:
+    Decodes Grey-coded data to binary. Parameterized for width
+*/
+
 module gc2bin (
     input  wire [WIDTH-1:0] gc,
     output wire [WIDTH-1:0] bin

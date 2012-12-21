@@ -1,0 +1,75 @@
+Builds types:
+-------------
+RXn - n=2,4,8,16,32, pickup for inputs
+TXn - n=2,4,8,16,32, full drive for outputs
+MX - Mixer board, any number of clients, PC/iPad/etc. based
+
+Topologies:
+-----------
+Simple:
+
+    RXn-->TXn
+
+- Direct connection
+- Synchronize timing
+- Selective channel mapping
+
+1:1 Switched:
+           ______
+    RXn-->|      |-->TXn
+    RXn-->|switch|-->TXn
+    RXn-->|______|-->TXn
+
+- Uses commodity switching (preferably low-latency)
+- Synchronize timing
+- Selective channel mapping
+
+Mixer:
+           _____
+    RXn-->|     |-->TXn
+    RXn-->|mixer|-->TXn
+    RXn-->|_____|-->TXn
+
+- Selective RX/TX channel mapping
+- Advanced DSP/filtering/effects
+- Optional peripherals
+- Mixer can be:
+    - commodity PC with special software
+    - traditional mixer board
+    - MX mixer board (internally attached to AudioNet processor)
+
+Full solution:
+
+- Uses switch to integrate even more devices
+
+Interfaces:
+-----------
+What does the interface for the users look like?
+- Channel select
+- Gain/balance
+    - per channel or per device?
+- EQ?
+    - per channel or per device?
+- LEDs?
+- LCD/screen/display?
+
+Packet format:
+--------------
+[Ethernet header]
+[IP header?]
+[UDP header?]
+PTP tag             // 64-bits
+Rev code            // 32-bits for alignment
+channel data[0]     // 32-bits
+channel data[1]
+...
+channel data[n]
+// Optional channel tags for labeling
+channel tags (*char[n])
+[Ethernet CRC]
+
+Other questions:
+----------------
+Why is Behringer not more prevalent?
+What do we do better?
+

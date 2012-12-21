@@ -1,3 +1,17 @@
+/* AHB Slave interface
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: ahbSlv
+
+Purpose: 
+    An AHB bus interface handler for simple register access
+
+Function:
+    Takes AHB commands and translates them into simple read and write
+    operations paired with register array addresses
+*/
+
 module ahbSlv (
     input  wire             hclk,
     input  wire             hresetn,

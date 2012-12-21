@@ -1,3 +1,25 @@
+/* rectifier
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: rectifier
+
+Purpose: 
+    Monitors serial input to DUT and aligns it for the scoreboard.
+
+Function:
+    Monitors the TDM input to the DUT and ensure that only valid and stable
+    data is loaded into the scoreboard. Non-aligned (i.e., error) frames 
+    are logged.
+
+    Works by shifting data into a shift-register based on sclk, starting at
+    sfs (serial frame-start) and then count bits received. Once the next 
+    sfs is seen, whatever is in the shift register is flopped to the 
+    parallel output for one cycle. If the number of cycles between sfses is
+    not 256, then an error is logged.
+
+    THIS MODULE IS NOT SYNTHESIZABLE. It is just for verification.
+*/
 
 module rectifier (
     input  wire         sclk,
@@ -10,7 +32,6 @@ module rectifier (
     output reg  [255:0] pdata
 );
 
-// Okay, so this needs to do rectifying and checking
 reg [255:0] shiftreg;
 reg         locked;
 

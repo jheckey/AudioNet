@@ -1,6 +1,6 @@
 /* Top level test
+Copyright: Hectic Tech, 2012, all rights reserved
 Author: Jeff Heckey (jheckey@gmail.com)
-Copyright: 2011, all rights reserved
 
 Module: tb
 
@@ -15,17 +15,20 @@ Function:
         * scoreboard - FIFOs for storing stimulus and response 
         * checker - compares expected to actual output
         * cpu - register read and write control
+        * tbconfig - configuration script loader (not implemented)
 */
 
 `timescale 1ns/1ns
 
 module tb;
 // Clocks and resets
-reg          clk;
-reg          rstn;
-reg          hclk;
-reg          hresetn;
-reg          sclk;
+reg          clk;       // system clock
+reg          rstn;      // system reset
+reg          hclk;      // AHB clock
+reg          hresetn;   // AHB reset
+reg          sclk;      // serial/TDM clock
+reg          gclk;      // generator clock (may contain jitter)
+reg          tbrstn;    // testbench reset
 
 
 // AHB bus interface
@@ -48,10 +51,9 @@ wire         fsout;
 wire         tdmout;
 
 // TB controls
-reg          gclk;
-reg          tbrstn;
-reg          sergen_en;
+reg          sergenEn, regMonEn;
 reg          passThru;
+reg  [31:0]  regPollDelay;
 wire         rxTestPass, txTestPass;
 wire         rxPvalid, regPvalid, txPvalid;
 wire [255:0] rxPdata, regPdata, txPdata;
@@ -77,7 +79,6 @@ initial begin
     hresetn   = 1'b0;
     gclk      = 1'b0;
     tbrstn    = 1'b0;
-    sergen_en = 1'b0;
 
     hsel      = 1'b0;
     haddr     = 32'd0;
@@ -87,7 +88,11 @@ initial begin
     htrans    = 2'd0;
     hwrite    = 1'b0;
     hwdata    = 32'd0;
+
+    sergenEn  = 1'b0;
+    regMonEn  = 1'b0;
     passThru  = 1'b0;
+    regPollDelay = 31'd1000;
 
     // wake up TB
     #20
@@ -119,7 +124,8 @@ initial begin
     // Start testing
     #10
     $display("%t: Starting serial generation...", $time);
-    sergen_en = 1'b1;
+    sergenEn = 1'b1;
+    regMonEn = 1'b1;
 
     // Finish test
     #30000
@@ -166,7 +172,7 @@ tdm tdm (
 sergen sergen (
     .sclk                   (gclk),
     .rstn                   (tbrstn),
-    .enable                 (sergen_en),
+    .enable                 (sergenEn),
     .sdata                  (tdmin),
     .sfs                    (fsin)
 );
@@ -219,6 +225,16 @@ checker rxCheck (
 );
 
 //checker txCheck
+
+regmon regMon (
+    .rclk                   (hclk),
+    .sclk                   (sclk),
+    .rstn                   (tbrstn),
+    .enable                 (regMonEn),
+    .pollingDelay           (regPollDelay),
+    .pValid                 (regPvalid),
+    .pData                  (regPdata)
+);
 
 `include "tasks.v"
 //`include "stim.v"

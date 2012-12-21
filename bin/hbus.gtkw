@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.34 (w)1999-2012 BSI
+[*] Tue Sep 18 00:00:24 2012
+[*]
+[dumpfile] "/tmp/all.lxt"
+[dumpfile_mtime] "Mon Sep 17 23:35:26 2012"
+[dumpfile_size] 159421
+[savefile] "/home/yetihack/Dropbox/AudioNet/bin/hbus.gtkw"
+[timestart] 40
+[size] 1615 1026
+[pos] -614 -398
+*-4.000000 88 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.tdm.
+[sst_width] 223
+[signals_width] 150
+[sst_expanded] 1
+[sst_vpaned_height] 467
+@28
+tb.tdm.tdm2p.clk[0]
+tb.tdm.tdm2p.rstn[0]
+tb.tdm.tdm2p.enable[0]
+@22
+tb.tdm.tdm2p.clkPatt[7:0]
+tb.tdm.tdm2p.clkMask[7:0]
+@28
+tb.tdm.tdm2p.sclk[0]
+tb.tdm.tdm2p.fs[0]
+tb.tdm.tdm2p.tdmin[0]
+@22
+tb.tdm.tdm2p.bit[7:0]
+tb.tdm.tdm2p.clkSamp[7:0]
+@29
+tb.tdm.tdm2p.sample[0]
+[pattern_trace] 1
+[pattern_trace] 0

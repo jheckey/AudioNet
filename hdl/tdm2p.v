@@ -39,6 +39,7 @@ module tdm2p (
     input  wire         fs,         // TDM frame sync
     input  wire         tdmin,      // TDM data in
 
+    output wire         sample,     // high for one cycle when sampling
     output reg          valid,      // single-cycle (clk) valid for pdata
     output reg  [255:0] pdata       // parallel data for samples
 );
@@ -55,9 +56,9 @@ reg             next;
 localparam POSEDGE = 1'b1, NEGEDGE = 1'b0;
 
 // Generate signal to sample
-wire posSamp    = (lastReg == NEGEDGE) && ((clkPatt & clkMask) == (clkSamp & clkMask));
-wire negSamp    = (lastReg == POSEDGE) && ((~clkPatt & clkMask) == (clkSamp & clkMask));
-wire sample     = !init && posSamp;
+wire    posSamp    = (lastReg == NEGEDGE) && ((clkPatt & clkMask) == (clkSamp & clkMask));
+wire    negSamp    = (lastReg == POSEDGE) && ((~clkPatt & clkMask) == (clkSamp & clkMask));
+assign  sample     = !init && posSamp;
 
 // Sample sclk
 always @(posedge clk or negedge rstn) begin
@@ -86,6 +87,8 @@ always @(posedge clk or negedge rstn) begin
         bit     <= 8'd255;
         tdata   <= 256'd0;
         pdata   <= 256'd0;
+        next    <= 1'b0;
+        valid   <= 1'b0;
     end
     else begin
         if (!enable) begin

@@ -1,3 +1,23 @@
+/* TDM
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: tdm
+
+Purpose: 
+    Top-level of the system. Contains TDM to registers input and registers
+    to TDM output.
+
+Function:
+    Simply, it takes 8 32-bit channels from a serial TDM stream, turns it
+    into 256-bit parallel data presented to the registers, and takes
+    256-bit parallel data from the registers and converts it to TDM output
+    for 8 32-bit channels.
+
+    All operations are controlled by the registers, so msot documentation is
+    found there.
+*/
+
 module tdm (
     // Clocks and resets
     input  wire         clk,
@@ -54,6 +74,7 @@ wire [7:0]              tdm2pClkPatt;           // From regs of regs.v
 wire                    tdm2pEnable;            // From regs of regs.v
 wire [255:0]            tdm2pPdata;             // From tdm2p of tdm2p.v
 wire                    tdm2pValid;             // From tdm2p of tdm2p.v
+wire                    tdm2pSample;            // From tdm2p of tdm2p.v
 wire                    tdmOut;                 // From p2tdm of p2tdm.v
 wire                    val;                    // From ahbSlv of ahbSlv.v
 wire                    valid;                  // From gainBal of gainBal.v
@@ -118,6 +139,7 @@ regs regs (/*AUTOINST*/
            .addr                        (addr[9:0]),
            .write                       (write),
            .wdata                       (wdata[31:0]),
+           .tdm2pSample                 (tdm2pSample),
            .tdm2pValid                  (tdm2pValid),
            .tdm2pPdata                  (tdm2pPdata[255:0]),
            .p2tdmRetrans                (p2tdmRetrans[15:0]),
@@ -127,6 +149,7 @@ regs regs (/*AUTOINST*/
 /* tdm2p AUTO_TEMPLATE (
         .enable         (tdm2pEnable),
         .clk\(.+\)      (tdm2pClk\1[]),
+        .sample         (tdm2pSample),
         .valid          (tdm2pValid),
         .pdata          (tdm2pPdata[]),
         .fs             (fsin),
@@ -134,6 +157,7 @@ regs regs (/*AUTOINST*/
 */
 tdm2p tdm2p (/*AUTOINST*/
              // Outputs
+             .sample                    (tdm2pSample),           // Templated
              .valid                     (tdm2pValid),            // Templated
              .pdata                     (tdm2pPdata[255:0]),     // Templated
              // Inputs

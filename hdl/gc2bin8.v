@@ -1,3 +1,16 @@
+/* 8-bit Grey-code decoder
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: gc2bin8
+
+Purpose: 
+    Decodes Grey-coded to binary
+
+Function:
+    Decodes Grey-coded bytes to binary
+*/
+
 module gc2bin8 (
     input  wire [7:0]  gc,
     output wire [7:0]  bin

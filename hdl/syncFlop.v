@@ -1,3 +1,20 @@
+/* synchronizer flops
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: syncFlop
+
+Purpose: 
+    Simple, variable depth synchronizer flop for data
+
+Function:
+    Allows for variable depth meta-stability flops to synchronize between 
+    clock domains. 
+    
+    Should NOT be used for parallel data, only serial data or
+    error-correctable/encoded controls
+*/
+
 module syncFlop (
     input  wire     clk,
     input  wire     rstn,

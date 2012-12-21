@@ -2,3 +2,4 @@
 ../tb/scoreboard.v
 ../tb/sergen.v
 ../tb/rectifier.v
+../tb/regmon.v

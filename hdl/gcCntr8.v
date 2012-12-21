@@ -1,3 +1,16 @@
+/* 8-bit Grey-coded counter
+Copyright: Hectic Tech, 2012, all rights reserved
+Author: Jeff Heckey (jheckey@gmail.com)
+
+Module: gcCntr8
+
+Purpose: 
+    8-bit counter that ouputs in Grey-code
+
+Function:
+    Counts by 8-bits (in normal binary), but converts output to Grey-code
+*/
+
 module gcCntr8 (
     input  wire         clk,
     input  wire         rstn,
