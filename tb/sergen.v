@@ -19,6 +19,8 @@ module sergen (
     input  wire     rstn,
 
     input  wire     enable,
+    input  wire     directData,
+    input  wire     ddata,
 
     output reg      sdata,      // serial data
     output reg      sfs         // serial frame sync
@@ -37,7 +39,7 @@ begin
     else begin
         if (enable) begin
             count   <= count + 8'd1;
-            sdata   <= {$random} % 2;
+            sdata   <= directData ? ddata : {$random} % 2;
             sfs     <= (count == 0) ? 1'b1 : 1'b0;
         end
     end

@@ -5,4 +5,4 @@ if [ ! -e tb.vvp ]; then
     exit -1
 fi
 
-vvp tb.vvp -lxt2
+vvp tb.vvp -lxt2 $@

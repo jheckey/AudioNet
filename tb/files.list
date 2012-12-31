@@ -1,4 +1,5 @@
 ../tb/tb.v
+../tb/tbconfig.v
 ../tb/scoreboard.v
 ../tb/sergen.v
 ../tb/rectifier.v

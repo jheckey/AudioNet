@@ -51,23 +51,32 @@ wire         fsout;
 wire         tdmout;
 
 // TB controls
-reg          sergenEn, regMonEn;
-reg          passThru;
-reg  [31:0]  regPollDelay;
-wire         rxTestPass, txTestPass;
-wire         rxPvalid, regPvalid, txPvalid;
-wire [255:0] rxPdata, regPdata, txPdata;
-wire         rxChkExpEmpty, rxChkExpPop;
-wire         txChkExpEmpty, txChkExpPop;
-wire [255:0] rxChkExpData, txChkExpData;
-wire         rxMonValid, txMonValid;
-wire [255:0] rxMonData, txMonData;
+integer             dump;
+reg  [8*256-1:0]    configFile;
+wire                cfgRdy;
+reg                 sergenEn, serjitEn, regMonEn; // tb control signals
+wire                sergenEnable, serjitEnable, regMonEnable; // config signals
+wire                p2tdm, tdm2p;
+wire [7:0]          tdmMask, tdmPatt;
+wire                passThru;
+wire [31:0]         regPollDelay;
+wire                directData, ddataEn, ddata;
+wire                rxTestPass, txTestPass;
+wire                rxPvalid, regPvalid, txPvalid;
+wire [255:0]        rxPdata, regPdata, txPdata;
+wire                rxChkExpEmpty, rxChkExpPop;
+wire                txChkExpEmpty, txChkExpPop;
+wire [255:0]        rxChkExpData, txChkExpData;
+wire                rxMonValid, txMonValid;
+wire [255:0]        rxMonData, txMonData;
 
 /* Dump controls */
 initial begin
-    $display("%t: Opening dumpfile", $time);
-    $dumpfile("/tmp/all.lxt");
-    $dumpvars(0,tb);
+    if (! $value$plusargs("dump=%d", dump)) begin
+        $display("%t: Opening dumpfile", $time);
+        $dumpfile("/tmp/all.lxt");
+        $dumpvars(0,tb);
+    end
 end
 
 initial begin
@@ -91,8 +100,11 @@ initial begin
 
     sergenEn  = 1'b0;
     regMonEn  = 1'b0;
-    passThru  = 1'b0;
-    regPollDelay = 31'd1000;
+
+    if (! $value$plusargs("cfg=%s", configFile)) begin
+        $display ("Please specify a config file: +cfg=<file>");
+        $finish;
+    end
 
     // wake up TB
     #20
@@ -109,23 +121,33 @@ initial begin
     #10
     $display("%t: Initialize DUT...", $time);
     // Enable bypass mode (tdm2p->p2tdm)
-    write_reg(32'h0000_0300, 32'h0000_0001);
-    passThru = 1'b1;
-    $display("bypass enabled");
+    write_reg(32'h0000_0300, {31'd0,passThru});
+    if (passThru)
+        $display("INIT: bypass enabled");
 
     // Enable p2tdm
-    write_reg(32'h0000_0100, 32'h8000_0000);
-    $display("p2tdm enabled");
+    write_reg(32'h0000_0100, {p2tdm,32'd0});
+    if (p2tdm)
+        $display("INIT: p2tdm enabled");
 
-    // Enable tdm2p, look for the pattern 00111100
-    write_reg(32'h0000_0000, 32'h8000_FF3C);
-    $display("tdm2p enabled");
+    // Enable tdm2p, look for the pattern tdmPatt
+    write_reg(32'h0000_0000, {tdm2p,15'd0,tdmMask,tdmPatt});
+    if (tdm2p)
+        $display("INIT: tdm2p enabled, sync pattern 0x%02h, mask 0x%02h", tdmPatt, tdmMask);
+
+    if (directData)
+        $display("INIT: serial data enabled, specified data pattern used");
+
+    if (ddataEn && directData)
+        $display("INIT: serial data enabled, using custom data from %-s", configFile);
+    else if (ddataEn && !directData)
+        $display("INIT: random serial data enabled");
 
     // Start testing
     #10
     $display("%t: Starting serial generation...", $time);
-    sergenEn = 1'b1;
-    regMonEn = 1'b1;
+    sergenEn = sergenEnable;
+    regMonEn = regMonEnable;
 
     // Finish test
     #30000
@@ -169,10 +191,30 @@ tdm tdm (
     .tdmout                 (tdmout)
 );
 
+tbconfig tbconfig (
+    .configFile(configFile),
+    .p2tdm(p2tdm),
+    .tdm2p(tdm2p),
+    .tdmPatt(tdmPatt),
+    .tdmMask(tdmMask),
+    .passThru(passThru),
+    .sergenEnable(sergenEnable),
+    .serjitEnable(serjitEnable),
+    .regMonEnable(regMonEnable),
+    .regPollDelay(regPollDelay),
+    .directData(directData),
+    .cfgRdy(cfgRdy),
+    .sclk(gclk),
+    .ddataEn(ddataEn),
+    .ddata(ddata)
+);
+
 sergen sergen (
     .sclk                   (gclk),
     .rstn                   (tbrstn),
     .enable                 (sergenEn),
+    .directData             (directData),
+    .ddata                  (ddata),
     .sdata                  (tdmin),
     .sfs                    (fsin)
 );

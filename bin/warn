@@ -1,0 +1,13 @@
+../tb/sergen.v:1: warning: timescale for sergen inherited from another file.
+../tb/rectifier.v:2: warning: timescale for rectifier inherited from another file.
+../hdl/regs.v:1: warning: timescale for regs inherited from another file.
+../hdl/ahbSlv.v:1: warning: timescale for ahbSlv inherited from another file.
+../hdl/syncFlop.v:1: warning: timescale for syncFlop inherited from another file.
+../hdl/resetSync.v:1: warning: timescale for resetSync inherited from another file.
+../hdl/gainBal.v:1: warning: timescale for gainBal inherited from another file.
+../hdl/gcCntr8.v:1: warning: timescale for gcCntr8 inherited from another file.
+../hdl/gc2bin8.v:1: warning: timescale for gc2bin8 inherited from another file.
+../hdl/p2tdm.v:15: warning: timescale for p2tdm inherited from another file.
+../hdl/tdm2p.v:30: warning: timescale for tdm2p inherited from another file.
+../hdl/tdmMux.v:1: warning: timescale for tdmMux inherited from another file.
+../hdl/tdm.v:1: warning: timescale for tdm inherited from another file.
